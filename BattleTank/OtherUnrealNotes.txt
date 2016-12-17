@@ -1,0 +1,157 @@
+Important Lectures:
+S3L79 (Accessors and Memory Layout)
+
+Blueprint InputAxis events are continuously polling since BeginPlay (e.g. MoveRight is getting called despite not moving)
+	- This is not the case in C++, making it more efficient(?)
+	
+Use triple '/' for non-tooltip comment lines and double '/' for tooltip comment lines
+
+Pointers should be defaulted to 'nullptr' and checked against it if not immediately assigned.
+	- This is why using the pointer by itself in a conditional is similar to boolean use (i.e. null is false)
+	
+	
+Post Process Shader
+	- Go to the level's PostProcessVolume under the Lighting folder
+	- In Post Process Volume -> Blendables, add an array element
+	- Add the shader material through the dropdown
+	- For all the actors that should have this applied, go to each actor's details panel
+	- Check the box for Render CustomDepth under Rendering.  Effect should be immediately applied in preview
+	
+Pawn
+	- Physics options are found in the CollisionComponent
+	- For first person view, you can set the eye height of the pawn as well as the ability to simulate physics and generate collision hits in the collision component to mimic the FPS view.
+	- Can be controlled by the PlayerController or the AIController
+	
+Collision
+	- Generate overlap events should be enabled for trigger volume detection
+	- If pawn is spherical, lock rotation on all axes under physics constraints
+	
+Textures
+	- Manipute a material's TexCoord UTiling and VTiling to fix stretching errors on a mesh
+	
+C++ to Blueprint
+	- UFUNCTION(BlueprintCallable)
+	- Use delegates to be able to broadcast to blueprint
+	- Note: You must click the component containing the C++ code before it shows up through right-click menu
+	
+Timeline Node
+	- Add keyframe coordinates on a float track to create value curve over a length of time
+	- Check "use last keyframe" to end timeline on the last keyframe
+	- If using the event track, an execution pin will be available to connect to an event node that you would like to execute at a specific keyframe.
+	
+Blueprint vs. C++
+	- Reference assets via Blueprint (e.g. EditAnywhere UPROPERTY) since it's easier than in hardcode
+	
+Github
+	- When creating a repository online, use the UnrealEngine gitignore file
+	- When creating the actual Unreal project, create the folder inside the repository folder and drag the gitignore file in it. Do an initial commit for just the gitignore file first in order to apply the settings on the actual project folder for future commits.
+	
+Landscape Creation
+	- Sculpt, Smooth/Flatten/Ramp, Erosion/Noise, Paint, Details
+	- Remember that Unreal uses centimeters (1 unit = 1 cm)
+	- The LightMassImportanceVolume can optimize light building speed over a large area
+	- When creating materials, use landscape layer blend and check "used with landscape"
+	- Under Paint mode, add target layers for the layer blends
+	- For low-poly style, see S4L104
+	
+Static Mesh
+	- Create sockets when using multiple meshes for a single actor (e.g. for the tank, create the socket on the tank body mesh and name them after mesh that you will attach)
+	- For the meshes that will be used in the sockets, simply specify which parent socket the mesh should attach to
+	
+DefaultSceneRoot
+	- Can be replaced by another component of your choosing (originally just there as placeholder)
+	
+GameMode
+	- Create either a world override game mode BP, or create a new BP from the C++ pre-built game mode
+	
+Event Graph
+	- You can have multiple event graphs, but only one can use the BeginPlay node
+	
+Camera
+	- To prevent "twisting" camera, add a scene component as root of spring arm (this will be the azimuth gimbal)
+	- In other words, horizontal camera rotation is driven by a scene component which we named a gimbal, while vertical camera will be driven by the spring arm child of the gimbal.  This forces the camera to always point towards the center without "twisting".
+	- To keep the camera locked to the horizon, disable "inherit roll" attribute of the spring arm.  Otherwise, if the controlled pawn is on uneven surface, the camera will tilt along the pawn.
+	- Use DeprojectScreenPositionToWorld to assist with crosshair aiming (this method simplifies the process by requiring the screen position coordinates/crosshair and two OUT variables)
+	
+Widgets (UI)
+	- WORKFLOW FOR MAIN MENU:
+		Level Blueprint (create the widget) -> Widget Blueprint (contains actual elements and click action)
+	- While in-game, the UI should ideally be driven by the PlayerController class by creating a widget after BeginPlay and adding to viewport (if it doesn't show up, re-open the project)
+	- If not in-game (e.g. main menu), use a level blueprint within an empty level
+	- Use a scale box panel to allow auto-scaling
+	- Import custom fonts from "dafont.com"
+	- Make sure to set ZOrder accordingly to keep widget elements in proper order
+	- Buttons should be variables in order to be interactable through events
+	- Button events can be added by click the appropriate option at the very bottom of the details tab
+	- Widgets need to be in a "ready" state to be selectable by non-mouse input (i.e. one of the buttons should already be in focus once the UI has loaded up to allow controller support).  This is done by setting the input mode to either UI or Game.
+	
+Game Packaging
+	- Before getting started, ensure that the "Main Menu" map is the game default map.  This will ensure that the packaged version of the game will start at the main menu
+	
+
+Default Subobjects in C++ (e.g. ActorComponent)
+	- Create the UActorComponent class in C++, include its header in the class you want to use it in, then use the CreateDefaultSubobject method in the constructor (e.g. TankAimingComponent in Tank)
+	- Any BP inheriting from the C++ tank will have the UActorComponent displayed in the components list
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
