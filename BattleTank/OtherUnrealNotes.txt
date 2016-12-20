@@ -92,6 +92,10 @@ Game Packaging
 Default Subobjects in C++ (e.g. ActorComponent)
 	- Create the UActorComponent class in C++, include its header in the class you want to use it in, then use the CreateDefaultSubobject method in the constructor (e.g. TankAimingComponent in Tank)
 	- Any BP inheriting from the C++ tank will have the UActorComponent displayed in the components list
+	
+Projectile
+	- Use UGameplayStatics::SuggestProjectileVelocity to get aim firing values, and FVector::GetSafeNormal for the aim direction
+	
 
 	
 	
