@@ -96,6 +96,25 @@ Default Subobjects in C++ (e.g. ActorComponent)
 Projectile
 	- Use UGameplayStatics::SuggestProjectileVelocity to get aim firing values, and FVector::GetSafeNormal for the aim direction
 	
+Forward Declaration vs. Header File
+	- Only use forward declaration for initializing objects of a certain class (i.e. letting another class A know that a particular class B exists and can have an object of it created)
+	- You must use header files when calling functions of a class
+	
+UCLASS Property
+	- In the header file, use the following UCLASS macro to allow Blueprint to spawn the component
+		UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
+		class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
+		{
+			...
+		}
+	- In the header file, use the following UCLASS macro to hide a category in the details tab
+		UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent), hidecategories = ("Collision"))
+		class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
+		{
+			...
+		}
+
+
 
 	
 	
