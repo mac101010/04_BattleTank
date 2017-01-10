@@ -1,6 +1,9 @@
 Important Lectures:
 S3L79 (Accessors and Memory Layout)
 
+Visual Studio Tips
+	- '// TODO' comments are trackable through the Task List under View
+
 Blueprint InputAxis events are continuously polling since BeginPlay (e.g. MoveRight is getting called despite not moving)
 	- This is not the case in C++, making it more efficient(?)
 	
@@ -101,7 +104,7 @@ Forward Declarations
 	- You must use header files when calling functions of a class (i.e. in .cpp files)
 	- In the header files, forward declarations should always be used
 	
-UCLASS Property
+UCLASS Property for Spawning C++ Components in BP (e.g. Barrel)
 	- In the header file, use the following UCLASS macro to allow Blueprint to spawn the component
 		UCLASS(ClassGroup = (Custom), meta = (BlueprintSpawnableComponent))
 		class BATTLETANK_API UTankBarrel : public UStaticMeshComponent
