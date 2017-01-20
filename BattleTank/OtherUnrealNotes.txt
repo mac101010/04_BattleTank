@@ -98,6 +98,7 @@ Default Subobjects in C++ (e.g. ActorComponent)
 	
 Projectile
 	- Use UGameplayStatics::SuggestProjectileVelocity to get aim firing values, and FVector::GetSafeNormal for the aim direction
+	- Use TSubclassOf when declaring pointers for type safety, especially when using SpawnActor
 	
 Forward Declarations
 	- Only use forward declaration for initializing objects of a certain class (i.e. letting another class A know that a particular class B exists and can have an object of it created)
@@ -119,7 +120,8 @@ UCLASS Property for Spawning C++ Components in BP (e.g. Barrel)
 		}
 
 
-
+TSubclassOf vs UCLASS
+	- https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf/
 	
 	
 	
