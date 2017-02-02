@@ -27,18 +27,19 @@ public:
 
 private:
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float CrosshairXLocation = 0.5;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditDefaultsOnly)
 	float CrosshairYLocation = 0.33333;
+
+	UPROPERTY(EditDefaultsOnly)
+	float LineTraceRange = 100000.0;
 
 	bool GetSightRayHitLocation(FVector &HitLocation) const;
 
 	bool GetLookDirection(FVector2D ScreenLocation, FVector &LookDirection) const;
 
 	bool GetLookVectorHitLocation(FVector LookDirection, FVector &HitLocation) const;
-
-	float LineTraceRange = 100000.0;
 
 };

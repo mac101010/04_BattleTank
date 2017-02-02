@@ -122,9 +122,11 @@ UCLASS Property for Spawning C++ Components in BP (e.g. Barrel)
 
 TSubclassOf vs UCLASS
 	- https://docs.unrealengine.com/latest/INT/Programming/UnrealArchitecture/TSubclassOf/
+	- Useful for type safety for functionality that need it, like UDamageType (e.g. AProjectile, ABomb, etc.)
 	
-	
-	
+EditAnywhere vs. EditDefaultsOnly
+	- EditAnywhere allows varying values between BP instances, while EditDefaultsOnly restricts varying values to only the BP itself (i.e. EditDefaultsOnly forces all BP instances to have the same values)
+
 	
 	
 	

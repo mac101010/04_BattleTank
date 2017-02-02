@@ -21,10 +21,5 @@ public:
 private:
 	virtual void BeginPlay() override;
 
-	void CheckController();
-
-	ATank* GetControlledTank() const;
-
-	ATank* GetPlayerTank() const;
-
+	//void CheckController();
 };
