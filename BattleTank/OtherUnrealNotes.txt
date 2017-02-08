@@ -3,6 +3,11 @@ S3L79 (Accessors and Memory Layout)
 
 Visual Studio Tips
 	- '// TODO' comments are trackable through the Task List under View
+	
+Design and General Tips
+	- Use the Iterative Cycle 
+		World -> Pawn -> Controller -> AI -> UI -> World
+	-Staying in one area of the cycle will stagnate development.  Build on advanced mechanics after at least one cycle.
 
 Blueprint InputAxis events are continuously polling since BeginPlay (e.g. MoveRight is getting called despite not moving)
 	- This is not the case in C++, making it more efficient(?)
@@ -33,7 +38,8 @@ Textures
 	- Manipute a material's TexCoord UTiling and VTiling to fix stretching errors on a mesh
 	
 C++ to Blueprint
-	- UFUNCTION(BlueprintCallable)
+	- UFUNCTION for methods (e.g. BlueprintCallable, etc.)
+	- UPROPERTY for variables (e.g. BlueprintReadOnly, etc.)
 	- Use delegates to be able to broadcast to blueprint
 	- Note: You must click the component containing the C++ code before it shows up through right-click menu
 	
@@ -44,6 +50,7 @@ Timeline Node
 	
 Blueprint vs. C++
 	- Reference assets via Blueprint (e.g. EditAnywhere UPROPERTY) since it's easier than in hardcode
+	- Input is easier to setup via Blueprint (e.g. Tank_BP Input Setup graph)
 	
 Github
 	- When creating a repository online, use the UnrealEngine gitignore file
@@ -78,7 +85,7 @@ Camera
 	
 Widgets (UI)
 	- WORKFLOW FOR MAIN MENU:
-		Level Blueprint (create the widget) -> Widget Blueprint (contains actual elements and click action)
+		Level Blueprint (create the widget) -> Widget Blueprint Designer (contains actual elements and click action) -> Widget Blueprint Graph (actual functionality)
 	- While in-game, the UI should ideally be driven by the PlayerController class by creating a widget after BeginPlay and adding to viewport (if it doesn't show up, re-open the project)
 	- If not in-game (e.g. main menu), use a level blueprint within an empty level
 	- Use a scale box panel to allow auto-scaling
@@ -127,13 +134,12 @@ TSubclassOf vs UCLASS
 EditAnywhere vs. EditDefaultsOnly
 	- EditAnywhere allows varying values between BP instances, while EditDefaultsOnly restricts varying values to only the BP itself (i.e. EditDefaultsOnly forces all BP instances to have the same values)
 
+Physics
+	- Physics Material can be applied to either the Pawn or the environment (e.g. the grass or the tank)
+	- For BattleTank, Track material BP uses friction combine min override for simplicity
 	
-	
-	
-	
-	
-	
-	
+Control System
+	- Fly-by-Wire architecture is a streamlined approach to inducing movement
 	
 	
 	
