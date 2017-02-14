@@ -141,9 +141,9 @@ Physics
 Control System
 	- Fly-by-Wire architecture is a streamlined approach to inducing movement
 	
-	
-	
-	
+AI
+	- AAIController class uses UNavMovementComponent if there's a nav mesh bounds volume present.
+	- MoveToActor call in TankAIController, RequestDirectMove call in TankMovementComponent
 	
 	
 	

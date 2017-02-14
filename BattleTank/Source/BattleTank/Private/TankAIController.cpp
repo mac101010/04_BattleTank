@@ -9,23 +9,6 @@ void ATankAIController::BeginPlay()
 	Super::BeginPlay();
 }
 
-/*
-void ATankAIController::CheckController()
-{
-	UE_LOG(LogTemp, Warning, TEXT("AIController Begin Play"));
-
-	auto CurrentTank = Cast<ATank>(GetPawn());
-	if (!CurrentTank)
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AIController has no tank possessed."));
-	}
-	else
-	{
-		UE_LOG(LogTemp, Warning, TEXT("AIController possessing %s"), *CurrentTank->GetName());
-	}
-}
-*/
-
 void ATankAIController::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
@@ -35,6 +18,7 @@ void ATankAIController::Tick(float DeltaTime)
 
 	if (PlayerTank)
 	{
+		MoveToActor(PlayerTank,AcceptanceRadius);
 		ControlledTank->AimAt(PlayerTank->GetActorLocation());
 		ControlledTank->Fire();
 	}

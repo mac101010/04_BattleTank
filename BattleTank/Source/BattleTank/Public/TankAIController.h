@@ -21,5 +21,5 @@ public:
 private:
 	virtual void BeginPlay() override;
 
-	//void CheckController();
+	float AcceptanceRadius = 3000;
 };
