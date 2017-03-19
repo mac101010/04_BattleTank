@@ -22,6 +22,8 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Action")
 	void Fire();
 
+	
+
 protected:
 	UPROPERTY(BlueprintReadOnly)
 	UTankAimingComponent* TankAimingComponent = nullptr;
@@ -32,6 +34,9 @@ protected:
 private:
 	// Sets default values for this pawn's properties
 	ATank();
+
+	virtual void BeginPlay() override;
+
 
 	UTankBarrel* Barrel = nullptr;
 

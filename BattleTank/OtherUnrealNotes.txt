@@ -153,8 +153,8 @@ Enumeration
 			Thing2
 		};
 	
-	
-	
+Debugging
+	- UE4 editor crashes can be diagnosed using Visual Studio Debugger.  Select Debug -> Attach to Process and select the UE4Editor.exe.
 	
 	
 	
