@@ -145,11 +145,13 @@ AI
 	- AAIController class uses UNavMovementComponent if there's a nav mesh bounds volume present.
 	- MoveToActor call in TankAIController, RequestDirectMove call in TankMovementComponent
 	
-	
-	
-	
-	
-	
+Enumeration
+	- 	UENUM()
+		enum class EThing : uint8
+		{
+			Thing1,
+			Thing2
+		};
 	
 	
 	
