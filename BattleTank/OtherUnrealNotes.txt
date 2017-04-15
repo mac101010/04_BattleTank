@@ -38,7 +38,7 @@ Textures
 	- Manipute a material's TexCoord UTiling and VTiling to fix stretching errors on a mesh
 	
 C++ to Blueprint
-	- UFUNCTION for methods (e.g. BlueprintCallable, etc.)
+	- UFUNCTION for methods (e.g. BlueprintCallable, BlueprintImplementableEvent, etc.)
 	- UPROPERTY for variables (e.g. BlueprintReadOnly, etc.)
 	- Use delegates to be able to broadcast to blueprint
 	- Note: You must click the component containing the C++ code before it shows up through right-click menu
@@ -155,6 +155,9 @@ Enumeration
 	
 Debugging
 	- UE4 editor crashes can be diagnosed using Visual Studio Debugger.  Select Debug -> Attach to Process and select the UE4Editor.exe.
+	
+
+
 	
 	
 	

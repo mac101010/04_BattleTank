@@ -11,9 +11,9 @@ class UTankTurret;
 UENUM()
 enum class EFiringState : uint8
 {
-	Locked,
+	Reloading,
 	Aiming,
-	Reloading
+	Locked
 };
 
 // Holds barrel's properties and Elevate method
