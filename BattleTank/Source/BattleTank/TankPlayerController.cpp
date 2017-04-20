@@ -11,9 +11,8 @@ void ATankPlayerController::BeginPlay()
 	CheckController();
 
 	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
-	//FoundAimingComponent(AimingComponent);
 	
-	if (AimingComponent)
+	if (ensure(AimingComponent))
 		FoundAimingComponent(AimingComponent);
 	else
 		UE_LOG(LogTemp, Warning, TEXT("Player controller can't find aiming component at BeginPlay"))
@@ -48,7 +47,7 @@ void ATankPlayerController::CheckController()
 void ATankPlayerController::AimTowardsCrosshair()
 {
 	// no use going through entire method if there's no controlled tank
-	if (!GetControlledTank())
+	if (!ensure(GetControlledTank()))
 		return;
 
 	// out parameter
