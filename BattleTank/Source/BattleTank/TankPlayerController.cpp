@@ -3,19 +3,18 @@
 #include "BattleTank.h"
 #include "TankAimingComponent.h"
 #include "TankPlayerController.h"
-#include "Tank.h"
 
 void ATankPlayerController::BeginPlay()
 {
 	Super::BeginPlay();
 	CheckController();
 
-	auto AimingComponent = GetControlledTank()->FindComponentByClass<UTankAimingComponent>();
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
 	
-	if (ensure(AimingComponent))
-		FoundAimingComponent(AimingComponent);
-	else
-		UE_LOG(LogTemp, Warning, TEXT("Player controller can't find aiming component at BeginPlay"))
+	if (!ensure(AimingComponent))
+		return;
+
+	FoundAimingComponent(AimingComponent);
 }
 
 void ATankPlayerController::Tick(float DeltaTime)
@@ -24,16 +23,11 @@ void ATankPlayerController::Tick(float DeltaTime)
 	AimTowardsCrosshair();
 }
 
-ATank* ATankPlayerController::GetControlledTank() const 
-{
-	return Cast<ATank>(GetPawn());
-}
-
 void ATankPlayerController::CheckController()
 {
 	UE_LOG(LogTemp, Warning, TEXT("PlayerController Begin Play"));
 
-	auto CurrentTank = GetControlledTank();
+	auto CurrentTank = GetPawn();
 	if (!CurrentTank)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("PlayerController has no tank possessed."));
@@ -46,8 +40,9 @@ void ATankPlayerController::CheckController()
 
 void ATankPlayerController::AimTowardsCrosshair()
 {
-	// no use going through entire method if there's no controlled tank
-	if (!ensure(GetControlledTank()))
+	auto AimingComponent = GetPawn()->FindComponentByClass<UTankAimingComponent>();
+
+	if (!ensure(AimingComponent))
 		return;
 
 	// out parameter
@@ -55,7 +50,7 @@ void ATankPlayerController::AimTowardsCrosshair()
 
 	if (GetSightRayHitLocation(HitLocation))
 	{
-		GetControlledTank()->AimAt(HitLocation);
+		AimingComponent->AimAt(HitLocation);
 	}
 }
 

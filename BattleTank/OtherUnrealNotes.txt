@@ -17,7 +17,7 @@ Use triple '/' for non-tooltip comment lines and double '/' for tooltip comment 
 Pointer Protection
 	- Pointers should be defaulted to 'nullptr' and checked against it if not immediately assigned.
 	- This is why using the pointer by itself in a conditional is similar to boolean use (i.e. null is false)
-	- Use "ensure" assertion for useful console output in Unreal Engine
+	- Use "ensure" assertion for useful console output in Unreal Engine (Note: ensure only executes once per compilation, so new code should be entered and recompiled for it to show up when playing)
 	
 	
 Post Process Shader
