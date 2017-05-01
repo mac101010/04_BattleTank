@@ -47,7 +47,7 @@ private:
 
 	virtual void TickComponent(float DeltaTime, enum ELevelTick TickType, FActorComponentTickFunction *ThisTickFunction) override;
 
-	bool IsBarrelMoving();
+	void IsBarrelMoving();
 
 	void MoveBarrelTowards(FVector AimDirection);
 
@@ -65,5 +65,5 @@ private:
 
 	double LastFireTime = 0;
 
-	FVector AimDirection;
+	auto AimDirection;
 };
