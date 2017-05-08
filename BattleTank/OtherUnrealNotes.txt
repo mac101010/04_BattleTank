@@ -35,6 +35,7 @@ Pawn
 Collision
 	- Generate overlap events should be enabled for trigger volume detection
 	- If pawn is spherical, lock rotation on all axes under physics constraints
+	- Make sure "Simulation Generates Hit Events" is enabled under Collision menu of the component for which you are trying to generate events (e.g. OnHit)
 	
 Textures
 	- Manipute a material's TexCoord UTiling and VTiling to fix stretching errors on a mesh
